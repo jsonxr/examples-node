@@ -1,0 +1,15 @@
+{
+  "name": "example-node-rest",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Example on a REST api",
+  "dependencies": {
+      "better-inspect": "*"
+  },
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jason Rowland",
+  "license": "BSD-2-Clause"
+}
