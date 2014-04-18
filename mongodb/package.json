@@ -1,0 +1,13 @@
+{
+  "name": "example-node-mongodb",
+  "private": true,
+  "description": "Example on how to use mongodb with node",
+  "dependencies": {
+      "mongodb": "*"
+  },
+  "scripts": {
+      "start": "node example.js"
+  },
+  "author": "Jason Rowland",
+  "license": "BSD-2-Clause"
+}
