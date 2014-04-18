@@ -1,0 +1,10 @@
+{
+  "name": "example-node-imap",
+  "private": true,
+  "description": "Example on how to use imap server",
+  "dependencies": {
+      "imap-server": "*"
+  },
+  "author": "Jason Rowland",
+  "license": "BSD-2-Clause"
+}
