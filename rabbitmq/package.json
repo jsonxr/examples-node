@@ -1,0 +1,10 @@
+{
+  "name": "example-node-rabbitmq",
+  "private": true,
+  "description": "Example on how to use rabbitmq with node",
+  "dependencies": {
+      "amqp": "*"
+  },
+  "author": "Jason Rowland",
+  "license": "BSD-2-Clause"
+}
