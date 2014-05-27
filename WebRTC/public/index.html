@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <button onclick="login('jsxonr')">Login as jsonxr</button> <button onclick="login('erin')">Login as erin</button><br/>
+
+    connect to: <input id="you" type="text" value="erin"></input> <button onclick="connect()">Connect</button><br/>
+    
+
+    <p id="other">hello?</p>
+    <br/>
+    
+    <textarea id="content"></textarea>
+    <br/>
+    <button onclick="send()">Send</button>
+    
+    
+    
+    <script type="text/javascript" src="js/peer.min.js"></script>
+    <script>
+    
+    var you = document.getElementById('you');
+    var content = document.getElementById('content');
+    var other = document.getElementById('other');
+    
+
+    var peer = null;
+    var connection = null;
+    var me = null;
+            
+    function login(user) {
+        me = user;
+        console.log('login');
+        console.log(user);
+        peer = new Peer(user, {host: 'localhost', port: 9000, path: '/myapp'});
+        peer.on('open', function(id) {
+          console.log('My peer ID is: ' + id);
+          peer.on('connection', function(conn) {
+              connection = conn;
+              connection.user = user;
+              conn.on('data', function (data) {
+                other.innerHTML = other.innerHTML + connection.peer + "> " + data + "<br/>";
+                console.log('Received', data);
+              });
+          });
+        });
+    }
+    
+    function connect() {
+        connection = peer.connect(you.value);
+        connection.on('open', function() {
+            console.log('open');
+
+            // Receive messages
+            connection.on('data', function(data) {
+                other.innerHTML = other.innerHTML + connection.peer + "> " + data + "<br/>";
+                console.log('Received', data);
+            });
+        });
+    
+    }
+    
+    function send() {
+        // Send messages
+        var data = content.value;
+        console.log('sending ' + data);
+        connection.send(data);
+        other.innerHTML = other.innerHTML + me+ "> " + data + "<br/>";
+        content.value = '';
+    }
+    
+    </script>
+</body>
+</html>
