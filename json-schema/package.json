@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "devDependencies": {
+    "nodeunit": "^0.9.0"
+  },
+  "dependencies": {
+    "jayschema": "*",
+    "jjv": "*",
+    "tv4": "*",
+    "z-schema": "*"
+  }
+}
