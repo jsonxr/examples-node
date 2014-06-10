@@ -1,13 +1,58 @@
+# Software Engineering with Node.js
+
+    This is meant to be a skeleton that shows good practices in node.js enterprise development.
+
+        * Server Technologies
+            ** express.js - web framework
+            ** Feature based file structure !(not yet)
+        * Client Technologies
+            ** SASS - css generation technology
+            ** angular.js - Single Page application framework by google
+            ** bootstrap - Starting css for modern ui
+            ** angular-strap/ui - integrate bootstrap with angular
+            ** Feature based file structure !(not yet)
+        * Database
+            ** mongo - nosql database
+            ** mongoose - ORM for mongo
+        * Code Quality
+            ** style guide (via README)
+            ** jshint - Enforced linting
+            ** jsdoc - code documenation !(not yet)
+            ** istanbul - code coverage !(not yet)
+            ** plato - code visualization !(not yet)
+        * Testing
+            ** nodeunit/mocha !(not yet)
+            ** Automated execution of test on js file change !(not yet)
+        * Automation
+            ** gulp - build system for development and deployment
+            ** bower - web component package management (for angular.js, bootsrap)
+        * Optimizations
+            ** css minification
+            ** js minification
+            ** js combining
+            ** js gzip !(not yet)
+            ** img compression !(not yet)
+
+
 # To Run
-brew install mongo
-npm install
-gulp
-node server.js
+
+    # Install required software
+    brew install node
+    brew install mongo
+
+    # Install node libraries
+    npm install
+
+    # Start mongod in new terminal
+    mongod
+    # Run gulp in new terminal
+    gulp
+    # Run node server in new terminal
+    node server.js
 
 
 http://sahatyalkabov.com/create-a-tv-show-tracker-using-angularjs-nodejs-and-mongodb/?utm_source=javascriptweekly&utm_medium=email
 
-# Software Engineering with Node.js
 
 # OS Tools
 ==============================================================================
