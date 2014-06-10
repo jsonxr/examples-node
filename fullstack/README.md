@@ -1,37 +1,38 @@
 # Software Engineering with Node.js
 
-    This is meant to be a skeleton that shows good practices in node.js enterprise development.
+This is meant to be a skeleton that shows good practices in node.js enterprise development.
 
-        * Server Technologies
-            ** express.js - web framework
-            ** Feature based file structure !(not yet)
-        * Client Technologies
-            ** SASS - css generation technology
-            ** angular.js - Single Page application framework by google
-            ** bootstrap - Starting css for modern ui
-            ** angular-strap/ui - integrate bootstrap with angular
-            ** Feature based file structure !(not yet)
-        * Database
-            ** mongo - nosql database
-            ** mongoose - ORM for mongo
-        * Code Quality
-            ** style guide (via README)
-            ** jshint - Enforced linting
-            ** jsdoc - code documenation !(not yet)
-            ** istanbul - code coverage !(not yet)
-            ** plato - code visualization !(not yet)
-        * Testing
-            ** nodeunit/mocha !(not yet)
-            ** Automated execution of test on js file change !(not yet)
-        * Automation
-            ** gulp - build system for development and deployment
-            ** bower - web component package management (for angular.js, bootsrap)
-        * Optimizations
-            ** css minification
-            ** js minification
-            ** js combining
-            ** js gzip !(not yet)
-            ** img compression !(not yet)
+* Server Technologies
+    * express.js - web framework
+    * Feature based file structure !(not yet)
+* Client Technologies
+    * SASS - css generation technology
+    * angular.js - Single Page application framework by google
+    * bootstrap - Starting css for modern ui
+    * angular-strap/ui - integrate bootstrap with angular
+    * Feature based file structure !(not yet)
+* Database
+    * mongo - nosql database
+    * mongoose - ORM for mongo
+* Code Quality
+    * style guide (via README)
+    * jshint - Enforced linting
+    * jsdoc - code documenation !(not yet)
+    * istanbul - code coverage !(not yet)
+    * plato - code visualization !(not yet)
+* Testing
+    * nodeunit/mocha !(not yet)
+    * Automated execution of test on js file change !(not yet)
+* Automation
+    * bower - web component package management (for angular.js, bootsrap)
+    * gulp - build system for development and deployment
+    * gulp-inject - Auto inserting script tags for development
+* Optimizations
+    * css minification
+    * js minification
+    * js combining
+    * js gzip !(not yet)
+    * img compression !(not yet)
 
 
 # To Run
@@ -56,10 +57,12 @@ http://sahatyalkabov.com/create-a-tv-show-tracker-using-angularjs-nodejs-and-mon
 
 # OS Tools
 ==============================================================================
+
 Mac - homebrew (http://brew.sh/)
 
 # Build system
 ==============================================================================
+
 ## gulp
 build system as code
 

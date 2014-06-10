@@ -46,14 +46,14 @@ gulp.task('bower', function() {
 gulp.task('bower_js', function () {
   return gulp.src([
     'bower_components/angular/angular.js',
-    'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+    //'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
     'bower_components/angular-cookies/angular-cookies.js',
     'bower_components/angular-messages/angular-messages.js',
     'bower_components/angular-resource/angular-resource.js',
     'bower_components/angular-route/angular-route.js',
     'bower_components/angular-strap/dist/angular-strap.js',
     'bower_components/angular-strap/dist/angular-strap.tpl.js',
-    'bower_components/angular-ui/build/angular-ui.js',
+    //'bower_components/angular-ui/build/angular-ui.js',
     'bower_components/momentjs/moment.js'
   ])
     .pipe(gulp.dest('client/vendor'));
@@ -92,22 +92,19 @@ gulp.task('sass', ['vendor'], function(cb) {
     //.pipe(sass({sourceComments: 'map', sourceMap: 'ignored'}))
     .pipe(autoprefixer('last 2 version'))
     .pipe(gulp.dest('client/css'))
-    .pipe(csso())
-    .pipe(rename({suffix:'.min'}))
-    .pipe(gulp.dest('client/css'));
+//    .pipe(csso())
+//    .pipe(rename({suffix:'.min'}))
+//    .pipe(gulp.dest('client/css'));
 });
 
-var javascriptGlob = 'client/**/*.js'
-
 gulp.task('javascript', function () {
-  return gulp.src([javascriptGlob, '!client/vendor/*.js'])
+  return gulp.src(['client/**/*.js', '!client/vendor/*.js'])
     .pipe(jshint())
     .pipe(jshint.reporter('default'))
-    //.pipe(jsdoc('docs'))
+//    .pipe(jsdoc('docs'))
 });
 
 gulp.task('index', ['javascript'], function () {
-
   return gulp.src('client/index.tmpl.html')
     .pipe(inject(gulp.src(['client/vendor/*.js', '!client/vendor/angular.js'],
         { read: false }),
@@ -115,7 +112,7 @@ gulp.task('index', ['javascript'], function () {
           ignorePath: ['client'],
           addRootSlash: false
         }))
-    .pipe(inject(gulp.src(['client/**/*.js', '!client/vendor/*.js'],
+    .pipe(inject(gulp.src(['client/**/*.js', '!client/vendor/*.js', '!client/app.js'],
         {read: false}),
         { ignorePath: ['client'],
           addRootSlash: false
@@ -126,16 +123,18 @@ gulp.task('index', ['javascript'], function () {
 
 gulp.task('watch', function() {
   gulp.watch('client/css/.scss', ['sass']);
-  gulp.watch(javascriptGlob, ['javascript', 'index']);
+  gulp.watch('client/**/*.js', ['javascript', 'index']);
   gulp.watch('client/index.tmpl.html', ['index']);
   // gulp.watch(['client/**/.js', '!build/public/app.min.js', '!client/vendor'], ['compress']);
 });
 
-// This is for building a dist
-//gulp.task('default', ['bower', 'vendor', 'sass', 'compress', 'templates', 'watch']);
-
 gulp.task('clean', function () {
-  return gulp.src(['client/vendor','client/fonts', 'client/css/*.css'], {read: false})
+  return gulp.src([
+    'client/vendor',
+    'client/fonts',
+    'client/css/*.css',
+    'client/index.html'
+  ], {read: false})
     .pipe(clean());
 });
 
@@ -143,6 +142,9 @@ gulp.task('clean', function () {
 gulp.task('default', ['bower', 'vendor', 'sass', 'javascript', 'index', 'watch']);
 
 
+
+// This is for building a dist
+//gulp.task('default', ['bower', 'vendor', 'sass', 'compress', 'templates', 'watch']);
 
 
 //// Compress the javascript into one file
