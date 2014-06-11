@@ -29,7 +29,9 @@ var uglify = require('gulp-uglify');
 
 
 //--------------------------------------
-// Vendor tasks
+// Init tasks
+//
+// These are tasks that only need to be once run after a clean
 //--------------------------------------
 
 /**
@@ -43,7 +45,7 @@ gulp.task('bower', function() {
 /**
  * Copy the javascript files
  */
-gulp.task('bower_js', function () {
+gulp.task('bower_js', ['bower'],  function () {
   return gulp.src([
     'bower_components/angular/angular.js',
     //'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
@@ -62,7 +64,7 @@ gulp.task('bower_js', function () {
 /**
  * Copy the fonts
  */
-gulp.task('bower_fonts', function () {
+gulp.task('bower_fonts', ['bower'], function () {
   return gulp.src(['bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/*'])
     .pipe(gulp.dest('client/fonts'));
 });
@@ -78,14 +80,14 @@ gulp.task('bower_sass', ['bower'], function () {
 /**
  * This is encapsulates all the dependencies for vendor
  */
-gulp.task('vendor', ['bower', 'bower_js', 'bower_fonts', 'bower_sass']);
+gulp.task('init', ['bower', 'bower_js', 'bower_fonts', 'bower_sass']);
 
 
 //--------------------------------------
 // Application tasks
 //--------------------------------------
 
-gulp.task('sass', ['vendor'], function(cb) {
+gulp.task('sass', function(cb) {
   return gulp.src('client/css/*.scss')
     .pipe(plumber())
     .pipe(sass())
@@ -104,7 +106,7 @@ gulp.task('javascript', function () {
 //    .pipe(jsdoc('docs'))
 });
 
-gulp.task('index', ['javascript'], function () {
+gulp.task('index', function () {
   return gulp.src('client/index.tmpl.html')
     .pipe(inject(gulp.src(['client/vendor/*.js', '!client/vendor/angular.js'],
         { read: false }),
@@ -130,6 +132,8 @@ gulp.task('watch', function() {
 
 gulp.task('clean', function () {
   return gulp.src([
+    'node_modules',
+    'bower_components',
     'client/vendor',
     'client/fonts',
     'client/css/*.css',
@@ -139,7 +143,7 @@ gulp.task('clean', function () {
 });
 
 
-gulp.task('default', ['bower', 'vendor', 'sass', 'javascript', 'index', 'watch']);
+gulp.task('default', ['bower', 'sass', 'javascript', 'index', 'watch']);
 
 
 

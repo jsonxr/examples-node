@@ -1,7 +1,8 @@
-var app = angular.module('MyApp', []);
+var app = angular.module('MyApp');
 
 app.factory('Alert', ['$rootScope', '$timeout', function($rootScope, $timeout) {
-  var alertService; $rootScope.alerts = [];
+  var alertService;
+  $rootScope.alerts = [];
 
   alertService = {
     add: function(alert) {
